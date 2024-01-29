@@ -1,0 +1,521 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="FES.DigitalIntegrationServices" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="FES.DigitalIntegrationServices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="FES.DigitalIntegrationServices">
+      <s:element name="OrderSubmit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AppKey" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderManifest" type="tns:OrderManifest"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OrderManifest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="OrderID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="OriginatorOrderID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Summary" type="tns:Summary"/>
+          <s:element minOccurs="0" maxOccurs="1" name="OriginatorName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiveDate" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CreateDate" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CheckoutDate" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="AppKey" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="SubOrders" type="tns:ArrayOfOrder"/>
+          <s:element minOccurs="0" maxOccurs="1" name="OrderProperties" type="tns:ArrayOfFESProperty"/>
+          <s:element minOccurs="0" maxOccurs="1" name="FileList" type="tns:ArrayOfMediaFile"/>
+          <s:element minOccurs="0" maxOccurs="1" name="TemplateList" type="tns:ArrayOfMediaFile"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Summary">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TotalTax" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="TotalPrice" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="TotalItemPrice" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="TotalShipping" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="TotalHandling" type="s:double"/>
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerInfo" type="tns:OMOwnerInfo"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="tns:OMStatus"/>
+          <s:element minOccurs="0" maxOccurs="1" name="TaxList" type="tns:ArrayOfTax"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OMOwnerInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address3" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="AddressType" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Address">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address3" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="AddressType" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OMBillingInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address3" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="AddressType" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OMShippingInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address3" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="AddressType" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PickupTime" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ReadyText" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PickupTimeZone" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="StoreNumber" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="MethodCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="MethodName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="NotificationEmail" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ClientShippingID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="StoreName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="LanguageCode" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OMStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTax">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Tax" nillable="true" type="tns:Tax"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Tax">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TaxID" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Rate" nillable="true" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOrder">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SubOrder" nillable="true" type="tns:Order"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Order">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Summary" type="tns:Summary"/>
+          <s:element minOccurs="0" maxOccurs="1" name="OriginatorSubOrderID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="VendorName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiveDate" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CreateDate" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillerID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="SubOrderID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="EnvelopeID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="DealerID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="LabCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="LineItems" type="tns:ArrayOfLineItem"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ShippingInfo" type="tns:OMShippingInfo"/>
+          <s:element minOccurs="0" maxOccurs="1" name="SubOrderProperties" type="tns:ArrayOfFESProperty"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Payments" type="tns:ArrayOfPaymentInfo"/>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionCollection" type="tns:ArrayOfTransaction"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLineItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineItem" nillable="true" type="tns:LineItem"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LineItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Pages" type="tns:ArrayOfPage"/>
+          <s:element minOccurs="0" maxOccurs="1" name="LineNumber" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillmentProductCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="LineItemDescription" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentInfoID" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ItemType" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ProductUPC" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ProductCode" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="UnitPrice" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="PromotedQuantity" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="PromotedUnitPrice" type="s:double"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PromotionID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PromotionName" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="BaseUnitPrice" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Tax" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ShippingPrice" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="HandlingPrice" type="s:double"/>
+          <s:element minOccurs="0" maxOccurs="1" name="SKU" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PrintCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="LineStatus" type="tns:OMStatus"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ItemOptionValueID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="TaxList" type="tns:ArrayOfTax"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ItemProperties" type="tns:ArrayOfFESProperty"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Page" nillable="true" type="tns:Page"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Page">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PageNumber" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="TemplateID" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PageProperties" type="tns:ArrayOfFESProperty"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Regions" type="tns:ArrayOfTemplateRegion"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFESProperty">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Property" nillable="true" type="tns:FESProperty"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FESProperty">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTemplateRegion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Region" nillable="true" type="tns:TemplateRegion"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TemplateRegion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MediaID" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="TemplateRegionPosition" type="tns:Position"/>
+          <s:element minOccurs="0" maxOccurs="1" name="RegionProperties" type="tns:ArrayOfFESProperty"/>
+          <s:element minOccurs="0" maxOccurs="1" name="RegionType" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="RegionID" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="TextToRender" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Position">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="InsetX" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="InsetY" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Width" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Height" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ZIndex" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPaymentInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PaymentInfo" nillable="true" type="tns:PaymentInfo"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PaymentInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentInfoID" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CreditCardType" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentExpirationDate" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentAmount" type="s:double"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentAuthCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentAuthCode2" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentMethodID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentMethodName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentData" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="BillingInfo" type="tns:OMBillingInfo"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentProperties" type="tns:ArrayOfFESProperty"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTransaction">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Transaction" nillable="true" type="tns:Transaction"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Transaction">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionDate" type="s:dateTime"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Destination" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Action" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionProcessor" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMediaFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MediaFile" nillable="true" type="tns:MediaFile"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MediaFile">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MediaID" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="MD5CheckSum" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="UploadBatchID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="SourceType" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="MediaFileName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="SizeKB" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="MediaFileType" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="tns:OMStatus"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="RelativeSource" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="MediaFileProperties" type="tns:ArrayOfFESProperty"/>
+          <s:element minOccurs="0" maxOccurs="1" name="MediaFileBinData" type="s:base64Binary"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="OrderSubmitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnStatus" type="tns:ReturnStatus"/>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderResponse" type="tns:OrderResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReturnStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="StatusData" type="tns:ArrayOfReturnData"/>
+        </s:sequence>
+        <s:attribute name="StatusCode" type="s:int" use="required"/>
+        <s:attribute name="StatusDescription" type="s:string"/>
+      </s:complexType>
+      <s:complexType name="ArrayOfReturnData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReturnData" nillable="true" type="tns:ReturnData"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReturnData">
+        <s:attribute name="Name" type="s:string"/>
+        <s:attribute name="Value" type="s:string"/>
+      </s:complexType>
+      <s:complexType name="OrderResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SubOrderResponse" type="tns:SubOrderResponse"/>
+        </s:sequence>
+        <s:attribute name="OrderID" type="s:string"/>
+        <s:attribute name="Code" type="s:string"/>
+        <s:attribute name="Description" type="s:string"/>
+      </s:complexType>
+      <s:complexType name="SubOrderResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineResponse" type="tns:LineResponse"/>
+        </s:sequence>
+        <s:attribute name="SubOrderID" type="s:string"/>
+        <s:attribute name="Code" type="s:string"/>
+        <s:attribute name="Description" type="s:string"/>
+      </s:complexType>
+      <s:complexType name="LineResponse">
+        <s:attribute name="LineNumber" type="s:int" use="required"/>
+        <s:attribute name="Code" type="s:string"/>
+        <s:attribute name="Description" type="s:string"/>
+      </s:complexType>
+      <s:element name="OrderCancel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AppKey" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderCancelRequest" type="tns:OrderCancelRequest"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OrderCancelRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SubOrderCancelRequest" type="tns:SubOrderCancelRequest"/>
+        </s:sequence>
+        <s:attribute name="OrderID" type="s:string"/>
+      </s:complexType>
+      <s:complexType name="SubOrderCancelRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineCancelRequest" type="tns:LineCancelRequest"/>
+        </s:sequence>
+        <s:attribute name="SubOrderID" type="s:string"/>
+      </s:complexType>
+      <s:complexType name="LineCancelRequest">
+        <s:attribute name="LineNumber" type="s:int" use="required"/>
+        <s:attribute name="LineCancelCode" type="s:string"/>
+        <s:attribute name="LineCancelReason" type="s:string"/>
+      </s:complexType>
+      <s:element name="OrderCancelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnStatus" type="tns:ReturnStatus"/>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderResponse" type="tns:OrderResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AppKey" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="OriginatorOrderID" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="OriginatorSubOrderID" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnStatus" type="tns:ReturnStatus"/>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderStatusResponse" type="tns:OrderStatusResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OrderStatusResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SubOrderStatusResponse" type="tns:SubOrderStatusResponse"/>
+        </s:sequence>
+        <s:attribute name="OrderID" type="s:string"/>
+      </s:complexType>
+      <s:complexType name="SubOrderStatusResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineItemStatusResponse" type="tns:LineItemStatusResponse"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StatusHistory" type="tns:Status"/>
+        </s:sequence>
+        <s:attribute name="SubOrderID" type="s:string"/>
+        <s:attribute name="CurrentStatusCode" type="s:string"/>
+      </s:complexType>
+      <s:complexType name="LineItemStatusResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StatusHistory" type="tns:Status"/>
+        </s:sequence>
+        <s:attribute name="LineNumber" type="s:string"/>
+        <s:attribute name="CurrentStatusCode" type="s:string"/>
+      </s:complexType>
+      <s:complexType name="Status">
+        <s:attribute name="StatusCode" type="s:string"/>
+        <s:attribute name="StatusDescription" type="s:string"/>
+        <s:attribute name="Notes" type="s:string"/>
+        <s:attribute name="EffectiveDate" type="s:dateTime" use="required"/>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="OrderSubmitSoapIn">
+    <wsdl:part name="parameters" element="tns:OrderSubmit"/>
+  </wsdl:message>
+  <wsdl:message name="OrderSubmitSoapOut">
+    <wsdl:part name="parameters" element="tns:OrderSubmitResponse"/>
+  </wsdl:message>
+  <wsdl:message name="OrderCancelSoapIn">
+    <wsdl:part name="parameters" element="tns:OrderCancel"/>
+  </wsdl:message>
+  <wsdl:message name="OrderCancelSoapOut">
+    <wsdl:part name="parameters" element="tns:OrderCancelResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetOrderStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOrderStatus"/>
+  </wsdl:message>
+  <wsdl:message name="GetOrderStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOrderStatusResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="OrderServicesSoap">
+    <wsdl:operation name="OrderSubmit">
+      <wsdl:input message="tns:OrderSubmitSoapIn"/>
+      <wsdl:output message="tns:OrderSubmitSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="OrderCancel">
+      <wsdl:input message="tns:OrderCancelSoapIn"/>
+      <wsdl:output message="tns:OrderCancelSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderStatus">
+      <wsdl:input message="tns:GetOrderStatusSoapIn"/>
+      <wsdl:output message="tns:GetOrderStatusSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OrderServicesSoap" type="tns:OrderServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="OrderSubmit">
+      <soap:operation soapAction="FES.DigitalIntegrationServices/OrderSubmit" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderCancel">
+      <soap:operation soapAction="FES.DigitalIntegrationServices/OrderCancel" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderStatus">
+      <soap:operation soapAction="FES.DigitalIntegrationServices/GetOrderStatus" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OrderServicesSoap12" type="tns:OrderServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="OrderSubmit">
+      <soap12:operation soapAction="FES.DigitalIntegrationServices/OrderSubmit" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderCancel">
+      <soap12:operation soapAction="FES.DigitalIntegrationServices/OrderCancel" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderStatus">
+      <soap12:operation soapAction="FES.DigitalIntegrationServices/GetOrderStatus" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrderServices">
+    <wsdl:port name="OrderServicesSoap" binding="tns:OrderServicesSoap">
+      <soap:address location="https://webservices.fujifilmesys.com/FES.DigitalIntegrationServices/Order/Orderservices.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="OrderServicesSoap12" binding="tns:OrderServicesSoap12">
+      <soap12:address location="https://webservices.fujifilmesys.com/FES.DigitalIntegrationServices/Order/Orderservices.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
